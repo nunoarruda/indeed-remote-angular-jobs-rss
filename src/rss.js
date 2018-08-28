@@ -5,8 +5,8 @@ exports.handler = async function(event, context, callback) {
   // create an rss feed
   const feed = new RSS({
     title: "Indeed Remote Angular Jobs RSS",
-    feed_url: "https://nunoarruda.cloudno.de/indeed-angular.rss",
-    site_url: "https://nunoarruda.cloudno.de"
+    feed_url: "https://indeed-remote-angular-jobs.netlify.com/.netlify/functions/rss",
+    site_url: "https://indeed-remote-angular-jobs.netlify.com"
   });
 
   // Indeed country list
