@@ -98,12 +98,16 @@ exports.handler = async function(event, context, callback) {
   }
 
   // resolve promises
+  // using "for of" instead of Promise.all for sequential requests
+  // we don't want to flood the API
   let searchResponseList = [];
   try {
-    const responseList = await Promise.all(promiseList);
-    searchResponseList = await Promise.all(
-      responseList.map(async response => await response.json())
-    );
+    for (const [index, promise] of promiseList.entries()) {
+      console.log(`Checking ${index + 1} of ${promiseList.length}`);
+      const response = await promise;
+      const data = await response.json();
+      searchResponseList.push(data);
+    }
   } catch (err) {
     console.error(err);
   }
