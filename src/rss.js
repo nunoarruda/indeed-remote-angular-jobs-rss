@@ -82,7 +82,7 @@ exports.handler = async function(event, context, callback) {
   const query1 =
     "title%3A%28%28angular+OR+ionic+OR+nativescript%29+%28home+OR+virtual+OR+remote+OR+worldwide+OR+distributed+OR+anywhere+OR+remotely+OR+telecommuting+OR+telecommute+OR+telework+OR+wfh+OR+teleworking+OR+telecommuters+OR+telecommuter+OR+teleworkers+OR+teleworker%29%29";
   const query2 = "title%3A%28angular+OR+ionic+OR+nativescript%29&l=remote";
-  const publisherID = 5035215435251303;
+  const publisherID = process.env.INDEED_PUBLISHER_ID;
 
   // iterate countries
   for (const co in countries) {
