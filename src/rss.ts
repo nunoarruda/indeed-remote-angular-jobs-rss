@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch, { Response } from "node-fetch";
 import RSS from "rss";
 
 exports.handler = async function(event, context, callback) {
@@ -78,7 +78,7 @@ exports.handler = async function(event, context, callback) {
     vn: "Vietnam"
   };
 
-  const promiseList = [];
+  const promiseList: Promise<Response>[] = [];
   const query1 =
     "title%3A%28%28angular+OR+ionic+OR+nativescript%29+%28home+OR+virtual+OR+remote+OR+worldwide+OR+distributed+OR+anywhere+OR+remotely+OR+telecommuting+OR+telecommute+OR+telework+OR+wfh+OR+teleworking+OR+telecommuters+OR+telecommuter+OR+teleworkers+OR+teleworker%29%29";
   const query2 = "title%3A%28angular+OR+ionic+OR+nativescript%29&l=remote";
@@ -100,12 +100,12 @@ exports.handler = async function(event, context, callback) {
   // resolve promises
   // using "for of" instead of Promise.all for sequential requests
   // we don't want to flood the API
-  let searchResponseList = [];
+  let searchResponseList: ISearchResponse[] = [];
   try {
     for (const [index, promise] of promiseList.entries()) {
       console.log(`Checking ${index + 1} of ${promiseList.length}`);
       const response = await promise;
-      const data = await response.json();
+      const data = await response.json() as ISearchResponse;
       searchResponseList.push(data);
     }
   } catch (err) {
@@ -119,7 +119,7 @@ exports.handler = async function(event, context, callback) {
     }
 
     return accumulator;
-  }, []);
+  }, [] as ISearchResult[]);
 
   // sort jobs by date (newest to oldest)
   jobs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -147,3 +147,17 @@ exports.handler = async function(event, context, callback) {
     headers: { "Content-Type": "application/rss+xml" }
   });
 };
+
+interface ISearchResponse {
+  totalResults: number;
+  results: ISearchResult[];
+}
+
+interface ISearchResult {
+  date: string;
+  url: string;
+  country: string;
+  company: string;
+  jobtitle: string;
+  snippet: string;
+}
