@@ -4,7 +4,7 @@ This is a [RSS feed](https://en.wikipedia.org/wiki/RSS) that lists remote jobs i
 
 ## Juiciest bits
 
-You can find the most interesting stuff at [`src/rss.js`](src/rss.js).
+You can find the most interesting stuff at [`src/rss.ts`](src/rss.ts).
 
 ## How to run locally
 
@@ -16,4 +16,4 @@ You can find the most interesting stuff at [`src/rss.js`](src/rss.js).
 
 ## Tech stack
 
-[Node.js](https://nodejs.org/en/), [node-fetch](https://github.com/bitinn/node-fetch), [node-rss](https://github.com/dylang/node-rss), and [netlify-lambda](https://github.com/netlify/netlify-lambda).
+[TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en/), [node-fetch](https://github.com/bitinn/node-fetch), [node-rss](https://github.com/dylang/node-rss), and [netlify-lambda](https://github.com/netlify/netlify-lambda).
