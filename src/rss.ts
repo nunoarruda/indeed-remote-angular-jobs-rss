@@ -1,7 +1,7 @@
 import fetch, { Response } from "node-fetch";
 import RSS from "rss";
 
-exports.handler = async function(event, context, callback) {
+exports.handler = async function() {
   // create an rss feed
   const feed = new RSS({
     title: "Indeed Remote Angular Jobs RSS",
@@ -141,11 +141,11 @@ exports.handler = async function(event, context, callback) {
   });
 
   // serve RSS
-  callback(null, {
+  return {
     statusCode: 200,
     body: feed.xml(),
     headers: { "Content-Type": "application/rss+xml" }
-  });
+  };
 };
 
 interface ISearchResponse {
