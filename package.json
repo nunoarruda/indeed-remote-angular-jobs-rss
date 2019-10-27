@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/nunoarruda/indeed-remote-angular-jobs-rss#readme",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.1.0",
-    "@types/node-fetch": "^2.1.4",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/node-fetch": "^2.5.2",
     "@types/rss": "0.0.28",
-    "netlify-lambda": "https://github.com/netlify/netlify-lambda"
+    "netlify-lambda": "^1.6.3"
   },
   "dependencies": {
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.0",
     "rss": "^1.2.2"
   }
 }
