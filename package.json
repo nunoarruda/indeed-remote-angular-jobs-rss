@@ -24,7 +24,7 @@
     "netlify-lambda": "^2.0.0"
   },
   "dependencies": {
-    "node-fetch": "^3.0.0-beta.7",
+    "node-fetch": "^3.0.0-beta.9",
     "rss": "^1.2.2"
   }
 }
